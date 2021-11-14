@@ -14,10 +14,10 @@ public class Enemy {
     }
 
     public EnemyType getType() {
-        return this.type;
+        return type;
     }
 
     public int getHealth() {
-        return this.health;
+        return health;
     }
 }
