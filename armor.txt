@@ -1,0 +1,3 @@
+Kolt Mesh,Harlin Robe,Cask Robe,Drax Armor,Zaid Armor,Harlin Mesh,Cask Mesh,Drax Mesh,Ship Clothes,
+Skywalk Mesh.Typical Mesh,Ordinary Armor,Mittany Armor,Arion Mesh,Arion Robe,Nahlan Mesh,Nahlan Robe,
+Moranthian Armor,Moranthian Robe,Cliodin Mesh,Cliodin Armor
