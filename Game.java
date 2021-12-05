@@ -3,8 +3,10 @@
 
 import java.util.ArrayList;
 import ansi_terminal.*;
+import java.io.File;
 
 public class Game {
+
     private Room room;
     private Player player;
     private ArrayList<Box> boxes;
@@ -206,6 +208,14 @@ public class Game {
                 setStatus("Here you find: " + thingHere.getItem().getName());
             }
         }
+    }
+
+    public static void saveGame() {
+        
+    }
+
+    public static void loadGame() {
+
     }
 }
 
