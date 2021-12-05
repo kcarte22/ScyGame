@@ -37,10 +37,21 @@ public class ItemGenerator {
             randomItem = new Item(randomType, itemName, weight, value, strength);
         } else if (randomType == ItemType.Armor) {
             String itemName = armors.get(rng.nextInt(armors.size()));
-            
+            int aWeight = rng.nextInt(12);
+            int aValue = rng.nextInt(15);
+            int aStrength = rng.nextInt(8);
+            randomItem = new Item(ItemType.Armor, itemName, aWeight, aValue, aStrength);
+        } else if (randomType == ItemType.Other) {
+            String itemName = misc.get(rng.nextInt(misc.size()));
+            int mWeight = rng.nextInt(15);
+            int mValue = rng.nextInt(30);
+            int mStrength = rng.nextInt(5);
+            randomItem = new Item(ItemType.Other, itemName, mWeight, mValue, mStrength);
+        } else {
+            randomItem =  null;
         }
 
-        return new Item(ItemType.Other, "Vase", 10, 2, 0);
+        return randomItem;
     }
 
     public static ArrayList<String> loadWeaponOptions(ArrayList<String> weapons) throws FileNotFoundException {
