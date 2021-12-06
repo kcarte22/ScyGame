@@ -14,6 +14,9 @@ public class World {
         scatteredItems = new ArrayList<Item>();
         for (int i = 0; i < 10; i++) {
             scatteredItems.add(ItemGenerator.generate());
+	
+	rooms = new ArrayList<Rooms>();
+	
         }
     }
 
