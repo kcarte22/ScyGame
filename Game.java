@@ -11,6 +11,7 @@ public class Game {
     private Player player;
     private ArrayList<Box> boxes;
     private ArrayList<Enemy> enemies;
+    private ArrayList<Door> doors;
 
     public Game() {
         room = new Room();
@@ -18,6 +19,7 @@ public class Game {
         boxes = room.getBoxes();
         enemies = room.getEnemies();
 	doors = room.getDoors();
+	world = new World();
     }
 
     // prints a help menu to the left of the map

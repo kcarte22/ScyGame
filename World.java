@@ -1,12 +1,15 @@
 package ScyGame;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.FileNotFoundException;
+import java.io.FileInputStream;
 
 import ansi_terminal.*;
 
 public class World {
     
-    
+    private ArrayList<Room> rooms;
+    private Room room1; 
     private static String[] grid;
     private static ArrayList<Item> scatteredItems;
 
@@ -19,18 +22,18 @@ public class World {
 	rooms = new ArrayList<Room>();
 	Scanner in = new Scanner(System.in);
 	try {
-		FileinputStream file = new FileinputStream("Room1.txt");
+		FileInputStream file = new FileInputStream("Room1.txt");
 		in = new Scanner(file);
 		Room room1 = new Room(in);
 		rooms.add(room1);
-		
-		
-	
-	
+	} catch (FileNotFoundException e) {
+		System.out.println("There is no where to go");
 
+	} 	
+		
 	} 
-        }
     }
+    
 
     public static void setupMap() {
         grid = new String[] {
@@ -137,7 +140,7 @@ public class World {
         int row = 0;
         int col = 0;
         for (row = 0; row < grid.length; row++) {
-            if (grid[row].charAt(col) == 'S') {
+            if (grid[row].charAt(col) == '@') {
                 xPlayerPosition = row;
                 yPlayerPosition = col;
             }

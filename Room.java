@@ -14,10 +14,10 @@ public class Room {
     private int rows;
     private int cols;
 
-public Room(Scanner in) {
-	in.next() = rows;
-	in.next() = cols;	
-}
+    public Room(Scanner in) {
+	rows = in.nextInt();
+	cols = in.nextInt();	
+} 
 
     public Room() {
         // this initializes the room to one specific space
