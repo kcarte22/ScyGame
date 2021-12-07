@@ -4,6 +4,7 @@
 
 import java.util.ArrayList;
 import ansi_terminal.*;
+import java.util.Scanner;
 
 public class Room {
     // the grid holds the room geometry
@@ -12,6 +13,11 @@ public class Room {
     // the size of the room
     private int rows;
     private int cols;
+
+public Room(Scanner in) {
+	in.next() = rows;
+	in.next() = cols;	
+}
 
     public Room() {
         // this initializes the room to one specific space
@@ -94,6 +100,18 @@ public class Room {
         }
 
         return enemies;
+    }
+
+    public ArrayList<Door> getDoors() {
+	ArrayList<Door> doors = new ArrayList<Door>();
+	for (int row = 0; row < rows; row++) {
+            for (int col = 0; col < cols; col++) {
+                if (grid[row].charAt(col) == 'O') {
+                    doors.add(new Door(row, col));
+		}
+    	    }
+	}
+	return doors;
     }
 
     public int getRows() {

@@ -17,6 +17,7 @@ public class Game {
         player = new Player(room.getPlayerStart());
         boxes = room.getBoxes();
         enemies = room.getEnemies();
+	doors = room.getDoors();
     }
 
     // prints a help menu to the left of the map

@@ -1,6 +1,6 @@
 package ScyGame;
 import java.util.ArrayList;
-import Scanner.util.java;
+import java.util.Scanner;
 
 import ansi_terminal.*;
 
@@ -16,8 +16,19 @@ public class World {
         for (int i = 0; i < 10; i++) {
             scatteredItems.add(ItemGenerator.generate());
 	
-	rooms = new ArrayList<Rooms>();
+	rooms = new ArrayList<Room>();
+	Scanner in = new Scanner(System.in);
+	try {
+		FileinputStream file = new FileinputStream("Room1.txt");
+		in = new Scanner(file);
+		Room room1 = new Room(in);
+		rooms.add(room1);
+		
+		
 	
+	
+
+	} 
         }
     }
 
