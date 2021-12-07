@@ -1,5 +1,7 @@
-// Game.java
-// contains logic for running the Game
+/**
+* Game.java
+* contains logic for running the Game
+*/
 
 import java.util.ArrayList;
 import ansi_terminal.*;
@@ -13,6 +15,10 @@ public class Game {
     private ArrayList<Box> boxes;
     private ArrayList<Enemy> enemies;
     private ArrayList<Door> doors;
+  
+/**
+*instantiates the different variables used within the class 
+*/
 
     public Game() {
 	world = new World();
@@ -20,7 +26,7 @@ public class Game {
         player = new Player(room.getPlayerStart());
         boxes = room.getBoxes();
         enemies = room.getEnemies();
-	doors = room.getDoors();
+//	doors = room.getDoors();
     }
 
     // prints a help menu to the left of the map
@@ -33,7 +39,8 @@ public class Game {
                          "List items: l",
                          "Equip weapon: w",
                          "Equip armor: a",
-                         "Quit: q"
+                         "Quit: q",
+			 "Change Room: c"
         };
         Terminal.setForeground(Color.GREEN);
         for (int row = 0; row < cmds.length; row++) {
@@ -41,6 +48,26 @@ public class Game {
             System.out.print(cmds[row]);
         }
         Terminal.reset();
+    }
+
+    private void changeRoom() {
+
+	if (room == world.getStartRoom()) {
+		room = world.getSecondRoom();
+		redrawMapAndHelp(); 
+		player = new Player(room.getPlayerStart());
+        	boxes = room.getBoxes();
+        	enemies = room.getEnemies();
+//		doors = room.getDoors();	
+	} else {
+		room = world.getFinalRoom();
+		redrawMapAndHelp(); 
+		player = new Player(room.getPlayerStart());
+        	boxes = room.getBoxes();
+        	enemies = room.getEnemies();
+//		doors = room.getDoors();
+	}
+
     }
 
     // right under the map we keep a line for status messages
@@ -113,6 +140,9 @@ public class Game {
                 redrawMapAndHelp();
                 break;
 
+	    case c:
+		changeRoom();
+
             // handle movement
             case LEFT: player.move(0, -1, room);
                 break;
@@ -137,6 +167,19 @@ public class Game {
         room.draw();
         showHelp();
     }
+
+/*    private void checkForDoor() {
+	Position playerLocation = player.getPosition();
+
+	for (Door door: doors) {
+		if (playerLocation.equals(door.getPosition())) {
+			return door;
+		}
+	}
+    
+    return null;
+
+    }  */
 
     // returns a Box if the player is on it -- otherwise null
     private Box checkForBox() {

@@ -1,6 +1,8 @@
-// Room.java
-// provides code for the drawing of a room
-// also provides starting locations for the player, boxes, and enemies
+ /** 
+ * Room.java
+ * provides code for the drawing of a room
+ * also provides starting locations for the player, boxes, and enemies
+ */
 
 import java.util.ArrayList;
 import ansi_terminal.*;
@@ -13,6 +15,11 @@ public class Room {
     // the size of the room
     private int rows;
     private int cols;
+
+/**
+* Room Scanner to take in  the number of rows and columns and then used to print out the rooms
+* @params in
+*/
 
     public Room(Scanner in) {
 	int row = 0;
@@ -68,8 +75,10 @@ public class Room {
         };
     }
 */
-    // returns the player's strting location in this room
-    public Position getPlayerStart() {
+    /**
+     * returns the player's strting location in this room
+    */
+      public Position getPlayerStart() {
         for (int row = 1; row < rows; row++) {
             for (int col = 1; col < cols; col++) {
                 if (grid[row].charAt(col) == '@') {
@@ -80,9 +89,10 @@ public class Room {
 
         return null;
     }
-
-    // returns a set of item boxes for this map, this is here because it depends on
-    // the room geometry for where the boxes make sense to be
+    /**
+    * returns a set of item boxes for this map, this is here because it depends on
+    * the room geometry for where the boxes make sense to be
+    */
     public ArrayList<Box> getBoxes() {
         ArrayList<Box> boxes = new ArrayList<Box>();
         for (int row = 1; row < rows; row++) {
@@ -96,7 +106,9 @@ public class Room {
         return boxes;
     }
 
-    // returns a set of enemies from this map, similarly to the boxes above
+    /**
+    * returns a set of enemies from this map, similarly to the boxes above
+    */
     public ArrayList<Enemy> getEnemies() {
         ArrayList<Enemy> enemies = new ArrayList<Enemy>();
         for (int row = 1; row < rows; row++) {
@@ -110,7 +122,7 @@ public class Room {
         return enemies;
     }
 
-    public ArrayList<Door> getDoors() {
+/*    public ArrayList<Door> getDoors() {
 	ArrayList<Door> doors = new ArrayList<Door>();
 	for (int row = 1; row < rows; row++) {
             for (int col = 1; col < cols; col++) {
@@ -120,7 +132,7 @@ public class Room {
     	    }
 	}
 	return doors;
-    }
+    } */
 
     public int getRows() {
         return rows;
@@ -130,7 +142,9 @@ public class Room {
         return cols;
     }
 
-    // draws the map to the screen
+    /**
+    * draws the map to the screen
+    */
     public void draw() {
         Terminal.clear();
         for (int row = 1; row < rows; row++) {
@@ -149,7 +163,9 @@ public class Room {
         }
     }
 
-    // returns if a given cell in the map is walkable or not
+    /**
+    * returns if a given cell in the map is walkable or not
+    */
     public boolean canGo(int row, int col) {
         return grid[row].charAt(col) != '#';
     }

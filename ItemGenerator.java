@@ -11,8 +11,31 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ItemGenerator {
+	private static Random rng = new Random(); 
+	public static Item generate() {
+		ArrayList<Item> items = new ArrayList<Item>();
+        	items.add(new Item(ItemType.Other, "Space Rock", 5, 1, 0));
+		items.add(new Item(ItemType.Other, "CPU", 2, 10, 0));
+		items.add(new Item(ItemType.Other, "Wires", 1, 3, 0));
+		items.add(new Item(ItemType.Other, "Docking Bay Key", 0, 25, 0));
+		items.add(new Item(ItemType.Other, "Energy Cell", 5, 50, 0));
+		items.add(new Item(ItemType.Armor, "Kolt Mesh", 10, 20, 0));
+		items.add(new Item(ItemType.Armor, "Harlin Robe", 8, 15, 0));
+		items.add(new Item(ItemType.Armor, "Cask Robe", 7, 10, 0));
+		items.add(new Item(ItemType.Armor, "Drax Armor", 20, 50, 0));
+		items.add(new Item(ItemType.Armor, "Zaid Armor", 16, 45, 0));
+		items.add(new Item(ItemType.Weapon, "Meteor Hand Pistol", 5, 10, 9));
+		items.add(new Item(ItemType.Weapon, "Active Proton Pistol", 4, 12, 8));
+		items.add(new Item(ItemType.Weapon, "Peacekeeper Thermal Phaser", 30, 10, 15));
+		items.add(new Item(ItemType.Weapon, "Sunshine Electron Phaser", 8, 25, 15));
+		items.add(new Item(ItemType.Weapon, "Stormfury Phaser", 6, 18, 10));
+		int x = rng.nextInt(15);
+		return items.get(x);	
 
-    private static Random rng;
+	}	
+
+
+/*    private static Random rng;
     private static List<ItemType> itemTypeValues = Collections.unmodifiableList(Arrays.asList(ItemType.values()));
     private static int typeSize = itemTypeValues.size();
     private static ArrayList<String> weapons = new ArrayList<String>();
@@ -82,6 +105,6 @@ public class ItemGenerator {
             continue;
         }
         return misc;
-    }
+    } */
 }
 
