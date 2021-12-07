@@ -1,4 +1,3 @@
-package ScyGame;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.FileNotFoundException;
@@ -7,9 +6,85 @@ import java.io.FileInputStream;
 import ansi_terminal.*;
 
 public class World {
+
+private ArrayList<Room> rooms;
     
+	public World() {
+
+	rooms = new ArrayList<Room>();
+	Scanner in = new Scanner(System.in);
+	try {
+		FileInputStream file = new FileInputStream("Room1.txt");
+		in = new Scanner(file);
+		Room room1 = new Room(in);
+		rooms.add(room1);
+	} catch (FileNotFoundException e) {
+		System.out.println("There is no where to go");
+		System.exit(-1);
+	}
+
+	try {
+		FileInputStream file = new FileInputStream("Room2.txt");
+		in = new Scanner(file);
+		Room room2 = new Room(in);
+		rooms.add(room2);
+	} catch (FileNotFoundException e) {
+		System.out.println("There is no where to go");
+		System.exit(-1);
+	} 		
+ 		
+	try {
+		FileInputStream file = new FileInputStream("Room3.txt");
+		in = new Scanner(file);
+		Room room3 = new Room(in);
+		rooms.add(room3);
+	} catch (FileNotFoundException e) {
+		System.out.println("There is no where to go");
+		System.exit(-1);
+	} 		
+
+
+	}
+
+	public Room getStartRoom() {
+	
+	return rooms.get(0);
+
+	}
+
+	public Room getSecondRoom() {
+
+	return rooms.get(1);
+
+	}
+
+	public Room getFinalRoom() {
+
+	return rooms.get(2);
+
+	}
+
+}
+
+/*	public static Player givePlayerPosition(Player player) {
+        	int xPlayerPosition = 0;
+        	int yPlayerPosition = 0;
+        	int row = 0;
+        	int col = 0;
+        	for (row = 0; row < grid.length; row++) {
+            		if (grid[row].charAt(col) == '@') {
+                		xPlayerPosition = row;
+                		yPlayerPosition = col;
+            		}
+        	}
+        return new Player(xPlayerPosition, yPlayerPosition);
+	}
+	
+
+}
+
+    private Room room1;  
     private ArrayList<Room> rooms;
-    private Room room1; 
     private static String[] grid;
     private static ArrayList<Item> scatteredItems;
 
@@ -149,3 +224,4 @@ public class World {
     }
 
 }
+*/

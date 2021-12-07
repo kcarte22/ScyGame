@@ -15,11 +15,19 @@ public class Room {
     private int cols;
 
     public Room(Scanner in) {
+	int row = 0;
 	rows = in.nextInt();
-	cols = in.nextInt();	
+	cols = in.nextInt();
+	in.nextLine();
+	String desc = "";
+	grid = new String[rows];
+	while (row < rows) {
+		grid[row] = in.nextLine();
+		row++;
+	}
 } 
 
-    public Room() {
+/*    public Room() {
         // this initializes the room to one specific space
         rows = 30;
         cols = 60;
@@ -59,11 +67,11 @@ public class Room {
             "############                                                "
         };
     }
-
+*/
     // returns the player's strting location in this room
     public Position getPlayerStart() {
-        for (int row = 0; row < rows; row++) {
-            for (int col = 0; col < cols; col++) {
+        for (int row = 1; row < rows; row++) {
+            for (int col = 1; col < cols; col++) {
                 if (grid[row].charAt(col) == '@') {
                     return new Position(row, col);
                 }
@@ -77,8 +85,8 @@ public class Room {
     // the room geometry for where the boxes make sense to be
     public ArrayList<Box> getBoxes() {
         ArrayList<Box> boxes = new ArrayList<Box>();
-        for (int row = 0; row < rows; row++) {
-            for (int col = 0; col < cols; col++) {
+        for (int row = 1; row < rows; row++) {
+            for (int col = 1; col < cols; col++) {
                 if (grid[row].charAt(col) == 'i') {
                     boxes.add(new Box(row, col, ItemGenerator.generate()));
                 }
@@ -91,8 +99,8 @@ public class Room {
     // returns a set of enemies from this map, similarly to the boxes above
     public ArrayList<Enemy> getEnemies() {
         ArrayList<Enemy> enemies = new ArrayList<Enemy>();
-        for (int row = 0; row < rows; row++) {
-            for (int col = 0; col < cols; col++) {
+        for (int row = 1; row < rows; row++) {
+            for (int col = 1; col < cols; col++) {
                 if (grid[row].charAt(col) == '*') {
                     enemies.add(EnemyGenerator.generate(row, col));
                 }
@@ -104,8 +112,8 @@ public class Room {
 
     public ArrayList<Door> getDoors() {
 	ArrayList<Door> doors = new ArrayList<Door>();
-	for (int row = 0; row < rows; row++) {
-            for (int col = 0; col < cols; col++) {
+	for (int row = 1; row < rows; row++) {
+            for (int col = 1; col < cols; col++) {
                 if (grid[row].charAt(col) == 'O') {
                     doors.add(new Door(row, col));
 		}
@@ -125,8 +133,8 @@ public class Room {
     // draws the map to the screen
     public void draw() {
         Terminal.clear();
-        for (int row = 0; row < rows; row++) {
-            for (int col = 0; col < cols; col++) {
+        for (int row = 1; row < rows; row++) {
+            for (int col = 1; col < cols; col++) {
                 char cell = grid[row].charAt(col);
                 if (cell == '#') {
                     // a unicode block symbol

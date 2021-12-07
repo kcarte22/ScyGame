@@ -8,18 +8,19 @@ import java.io.File;
 public class Game {
 
     private Room room;
+    private World world;
     private Player player;
     private ArrayList<Box> boxes;
     private ArrayList<Enemy> enemies;
     private ArrayList<Door> doors;
 
     public Game() {
-        room = new Room();
+	world = new World();
+        room = world.getStartRoom();
         player = new Player(room.getPlayerStart());
         boxes = room.getBoxes();
         enemies = room.getEnemies();
 	doors = room.getDoors();
-	world = new World();
     }
 
     // prints a help menu to the left of the map
